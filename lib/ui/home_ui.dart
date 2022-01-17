@@ -27,36 +27,57 @@ class HomeUI extends StatelessWidget {
               body: Center(
                 child: Column(
                   children: <Widget>[
-                    SizedBox(height: 120),
-                    Avatar(controller.firestoreUser.value!),
+                    SizedBox(height: 30),
+                    Row(
+                    
+                  
+                      children: [
+                        Avatar(controller.firestoreUser.value!),
+                        SizedBox(width: 30,),
+                        Text(
+                           
+                                controller.firestoreUser.value!.name,
+                            style: TextStyle(fontSize: 16)),
+                      ],
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
+                       
+                        FormVerticalSpace(),
                         FormVerticalSpace(),
                         Text(
-                            'home.uidLabel'.tr +
+                            'Edad' +
                                 ': ' +
-                                controller.firestoreUser.value!.uid,
+                                controller.firestoreUser.value!.age,
                             style: TextStyle(fontSize: 16)),
                         FormVerticalSpace(),
-                        Text(
-                            'home.nameLabel'.tr +
+                           Text(
+                            'Sexo' +
                                 ': ' +
-                                controller.firestoreUser.value!.name,
+                                controller.firestoreUser.value!.gender,
                             style: TextStyle(fontSize: 16)),
                         FormVerticalSpace(),
-                        Text(
-                            'home.emailLabel'.tr +
+                           Text(
+                            'Peso' +
                                 ': ' +
-                                controller.firestoreUser.value!.email,
+                                controller.firestoreUser.value!.weight + " kg",
                             style: TextStyle(fontSize: 16)),
                         FormVerticalSpace(),
-                        Text(
-                            'home.adminUserLabel'.tr +
+                           Text(
+                            'Estatura' +
                                 ': ' +
-                                controller.admin.value.toString(),
+                                controller.firestoreUser.value!.height + " cm",
                             style: TextStyle(fontSize: 16)),
+                       
+                        FormVerticalSpace(),
+                           Text(
+                            'Complexión' +
+                                ': ' +
+                                controller.firestoreUser.value!.bodytype,
+                            style: TextStyle(fontSize: 16)),
+                       
                       ],
                     ),
                   ],

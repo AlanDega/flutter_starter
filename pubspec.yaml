@@ -25,6 +25,10 @@ dependencies:
   crypto: ^3.0.1
   http: ^0.13.1
   csv: ^5.0.0
+  persistent_bottom_nav_bar: ^4.0.2
+  youtube_player_flutter: ^8.0.0
+  video_viewer: ^1.2.7
+
 
 
 dependency_overrides:
@@ -32,7 +36,8 @@ dependency_overrides:
  # intl: 0.17.0
 
 dev_dependencies:
-  
+  change_app_package_name: ^1.0.0
+
 
 flutter:
   uses-material-design: true

@@ -61,6 +61,12 @@ class UpdateProfileUI extends StatelessWidget {
                           UserModel _updatedUser = UserModel(
                               uid: authController.firestoreUser.value!.uid,
                               name: authController.nameController.text,
+                              age:"",
+                              gender:"",
+                              bodytype:"",
+                              weight:"",
+                              height:"",
+                              goal:"",
                               email: authController.emailController.text,
                               photoUrl:
                                   authController.firestoreUser.value!.photoUrl);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_starter/ui/choose_avatar_ui.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_starter/models/models.dart';
@@ -48,9 +49,9 @@ class AuthController extends GetxController {
 
     if (_firebaseUser == null) {
       print('Send to signin');
-      Get.offAll(SignInUI());
+      Get.offAll(() => SignInUI());
     } else {
-      Get.offAll(HomeUI());
+      Get.offAll(() => ChooseAvatar());
     }
   }
 
@@ -116,10 +117,17 @@ class AuthController extends GetxController {
         );
         //create the new user object
         UserModel _newUser = UserModel(
-            uid: result.user!.uid,
-            email: result.user!.email!,
-            name: nameController.text,
-            photoUrl: gravatarUrl);
+          uid: result.user!.uid,
+          email: result.user!.email!,
+          name: nameController.text,
+          photoUrl: gravatarUrl,
+          age: "",
+          bodytype: "",
+          gender: "",
+          goal: "",
+          weight: "",
+          height: "",
+        );
         //create the user in firestore
         _createUserFirestore(_newUser, result.user!);
         emailController.clear();
@@ -159,7 +167,6 @@ class AuthController extends GetxController {
           _authUpdateUserNoticeTitle = 'auth.updateUserEmailInUse'.tr;
           _authUpdateUserNotice = 'auth.updateUserEmailInUse'.tr;
         } else {
-          
           _authUpdateUserNoticeTitle = 'auth.wrongPasswordNotice'.tr;
           _authUpdateUserNotice = 'auth.wrongPasswordNotice'.tr;
         }
@@ -200,7 +207,9 @@ class AuthController extends GetxController {
 
   //create the firestore user in users collection
   void _createUserFirestore(UserModel user, User _firebaseUser) {
-    _db.doc('/users/${_firebaseUser.uid}').set(user.toJson());
+    _db.doc('/users/${_firebaseUser.uid}').set(user.toJson()).then((val) {
+      print("");
+    });
     update();
   }
 
